@@ -1050,21 +1050,40 @@
     var btnDod     = document.getElementById('btn-dod');
     var btnStr     = document.getElementById('btn-str');
 
+    var assignedGame = null; // 'dod' or 'str'
+
     function updateConsent() {
       var checked = chkMain.checked;
       consentEl.classList.toggle('checked', checked);
 
       if (checked) {
-        btnDod.classList.add('enabled');
-        btnStr.classList.add('enabled');
-        btnDod.removeAttribute('tabindex');
-        btnStr.removeAttribute('tabindex');
-        lockNotice.classList.add('hidden');
+        // まだ割り当てられていない場合はランダムに決定
+        if (!assignedGame) {
+          assignedGame = Math.random() < 0.5 ? 'dod' : 'str';
+        }
+
+        // 割り当てられたゲームのみを有効化
+        if (assignedGame === 'dod') {
+          btnDod.classList.add('enabled');
+          btnDod.removeAttribute('tabindex');
+          btnStr.classList.remove('enabled');
+          btnStr.setAttribute('tabindex', '-1');
+          lockNotice.textContent = "Dice of Destiny が割り当てられました。";
+        } else {
+          btnStr.classList.add('enabled');
+          btnStr.removeAttribute('tabindex');
+          btnDod.classList.remove('enabled');
+          btnDod.setAttribute('tabindex', '-1');
+          lockNotice.textContent = "Straying が割り当てられました。";
+        }
+        lockNotice.classList.remove('hidden');
       } else {
+        // チェックが外れたら両方無効
         btnDod.classList.remove('enabled');
         btnStr.classList.remove('enabled');
         btnDod.setAttribute('tabindex', '-1');
         btnStr.setAttribute('tabindex', '-1');
+        lockNotice.textContent = "すべての項目に同意すると、参加するゲームがランダムに割り当てられます。";
         lockNotice.classList.remove('hidden');
       }
     }
