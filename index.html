@@ -1069,12 +1069,6 @@
       }
     }
 
-    consentEl.addEventListener('click', function(e) {
-      if (e.target.tagName === 'INPUT') return; // changeイベントに任せる
-      chkMain.checked = !chkMain.checked;
-      updateConsent();
-    });
-
     chkMain.addEventListener('change', updateConsent);
 
     // ---------- Scroll Reveal ----------
