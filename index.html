@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>オンライン調査ご協力案内 | 東京大学大学院情報学環</title>
+  <meta name="description" content="喪失をテーマにしたゲームの体験がプレイヤーに及ぼす影響に関する探索的研究へのご協力のお願い。東京大学大学院情報学環 藤本研究室。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg:         #F5F6FA;
+      --bg-alt:     #ECEEF5;
+      --accent:     #1B3A6B;
+      --accent-mid: #2952A3;
+      --accent-light:#4A7AC8;
+      --accent-pale: #E8EEF8;
+      --text:        #1A2340;
+      --text-muted:  #5A6478;
+      --text-light:  #9CA3AF;
+      --white:       #FFFFFF;
+      --danger:      #C0392B;
+      --danger-bg:   rgba(192,57,43,0.07);
+      --card-bg:     #FFFFFF;
+      --card-border: rgba(26,35,64,0.1);
+      --radius:      12px;
+      --radius-sm:    8px;
+      --shadow:      0 4px 20px rgba(26,35,64,0.08);
+      --shadow-hover: 0 8px 32px rgba(26,35,64,0.14);
+      --transition:  0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.8;
+      min-height: 100vh;
+      background-image:
+        radial-gradient(ellipse 80% 40% at 50% -10%, rgba(74,122,200,0.07) 0%, transparent 70%);
+    }
+
+    /* ===== HEADER ===== */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      background: rgba(245,246,250,0.92);
+      border-bottom: 1px solid var(--card-border);
+      box-shadow: 0 1px 8px rgba(26,35,64,0.06);
+    }
+
+    .header-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .univ-badge {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .univ-name {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 13px;
+      color: var(--accent);
+      line-height: 1.4;
+    }
+
+    .univ-name span {
+      display: block;
+      font-size: 10px;
+      color: var(--text-muted);
+      font-family: 'Noto Sans JP', sans-serif;
+      font-weight: 300;
+    }
+
+    .header-divider {
+      width: 1px;
+      height: 32px;
+      background: var(--card-border);
+    }
+
+    .header-title {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      padding: 80px 24px 64px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 300px;
+      background: radial-gradient(ellipse, rgba(74,122,200,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      background: var(--accent-pale);
+      border: 1px solid rgba(26,58,107,0.15);
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      padding: 6px 16px;
+      border-radius: 20px;
+      margin-bottom: 24px;
+      animation: fadeInDown 0.6s ease both;
+    }
+
+    .hero h1 {
+      font-family: 'Noto Serif JP', serif;
+      font-size: clamp(22px, 4vw, 34px);
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.5;
+      margin-bottom: 20px;
+      animation: fadeInUp 0.7s ease 0.1s both;
+    }
+
+    .hero h1 .highlight {
+      color: var(--accent-mid);
+    }
+
+    .hero-lead {
+      font-size: clamp(14px, 2.5vw, 16px);
+      color: var(--text-muted);
+      max-width: 620px;
+      margin: 0 auto 40px;
+      animation: fadeInUp 0.7s ease 0.2s both;
+    }
+
+    /* ===== MAIN CONTAINER ===== */
+    .container {
+      max-width: 840px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+
+    /* ===== FLOW STEPS ===== */
+    .flow-section {
+      margin-bottom: 64px;
+      animation: fadeInUp 0.7s ease 0.3s both;
+    }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      color: var(--accent-light);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      font-family: 'Noto Serif JP', serif;
+      font-size: clamp(18px, 3vw, 24px);
+      color: var(--text);
+      margin-bottom: 32px;
+    }
+
+    .flow-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 0;
+      position: relative;
+    }
+
+    .flow-steps::before {
+      content: '';
+      position: absolute;
+      top: 36px;
+      left: 10%;
+      right: 10%;
+      height: 2px;
+      background: linear-gradient(to right, var(--gold), rgba(200,169,110,0.2));
+      z-index: 0;
+    }
+
+    .flow-step {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 0 12px;
+    }
+
+    .step-circle {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: var(--white);
+      border: 2px solid var(--accent-light);
+      margin: 0 auto 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 12px rgba(26,35,64,0.1);
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+
+    .flow-step:hover .step-circle {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(26,35,64,0.16);
+    }
+
+    .step-number {
+      font-size: 10px;
+      color: var(--accent);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+    }
+
+
+    .step-title {
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .step-desc {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* ===== ACCORDION ===== */
+    .explanation-section {
+      margin-bottom: 48px;
+    }
+
+    .accordion {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .accordion-item {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: border-color var(--transition), box-shadow var(--transition);
+      box-shadow: var(--shadow);
+    }
+
+    .accordion-item:hover {
+      border-color: rgba(26,58,107,0.25);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .accordion-item.open {
+      border-color: rgba(26,58,107,0.35);
+    }
+
+    .accordion-header {
+      width: 100%;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 18px 20px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-align: left;
+      color: var(--text);
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      transition: background var(--transition);
+    }
+
+    .accordion-header:hover {
+      background: rgba(26,35,64,0.03);
+    }
+
+    .accordion-num {
+      min-width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: var(--white);
+      font-size: 12px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .accordion-chevron {
+      margin-left: auto;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: rgba(26,35,64,0.06);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: transform var(--transition), background var(--transition);
+    }
+
+    .accordion-item.open .accordion-chevron {
+      transform: rotate(180deg);
+      background: var(--accent-pale);
+    }
+
+    .accordion-chevron svg {
+      width: 12px;
+      height: 12px;
+      fill: none;
+      stroke: var(--text-muted);
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .accordion-body {
+      display: none;
+      padding: 0 20px 20px 62px;
+      color: var(--text-muted);
+      font-size: 14px;
+      line-height: 1.9;
+    }
+
+    .accordion-item.open .accordion-body {
+      display: block;
+      animation: slideDown 0.25s ease;
+    }
+
+    .accordion-body p + p {
+      margin-top: 12px;
+    }
+
+    /* 警告ボックス */
+    .warning-box {
+      margin-top: 16px;
+      padding: 14px 16px;
+      background: var(--danger-bg);
+      border: 1px solid rgba(192,57,43,0.25);
+      border-radius: var(--radius-sm);
+      color: #922B21;
+      font-size: 13px;
+    }
+
+    /* ===== CONSENT SECTION ===== */
+    .consent-section {
+      background: var(--white);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      padding: 32px;
+      margin-bottom: 40px;
+      box-shadow: var(--shadow);
+    }
+
+    .consent-title {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 20px;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .consent-subtitle {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 28px;
+    }
+
+    .consent-single {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      cursor: pointer;
+      padding: 20px;
+      border-radius: var(--radius);
+      border: 2px solid rgba(26,58,107,0.2);
+      background: var(--accent-pale);
+      margin-bottom: 28px;
+      transition: background var(--transition), border-color var(--transition);
+      user-select: none;
+    }
+
+    .consent-single:hover {
+      background: #DCE6F5;
+      border-color: rgba(26,58,107,0.35);
+    }
+
+    .consent-single.checked {
+      background: #D0DFF5;
+      border-color: var(--accent);
+    }
+
+    .consent-checkbox {
+      width: 26px;
+      height: 26px;
+      border: 2px solid rgba(26,58,107,0.35);
+      border-radius: 7px;
+      background: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+      transition: all var(--transition);
+    }
+
+    .consent-single.checked .consent-checkbox {
+      background: var(--accent);
+      border-color: var(--accent);
+      box-shadow: 0 0 12px rgba(26,58,107,0.25);
+    }
+
+    .checkmark {
+      display: none;
+      width: 14px;
+      height: 14px;
+    }
+
+    .checkmark path {
+      fill: none;
+      stroke: var(--white);
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .consent-single.checked .checkmark {
+      display: block;
+    }
+
+    .consent-text {
+      font-size: 15px;
+      color: var(--text);
+      line-height: 1.75;
+      font-weight: 500;
+    }
+
+    .consent-text small {
+      display: block;
+      font-size: 12px;
+      color: var(--text-muted);
+      font-weight: 400;
+      margin-top: 6px;
+    }
+
+    /* ===== GAME BUTTONS ===== */
+    .game-buttons-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .game-card {
+      position: relative;
+      border-radius: var(--radius);
+      border: 1px solid var(--card-border);
+      padding: 24px 20px;
+      text-align: center;
+      text-decoration: none;
+      overflow: hidden;
+      transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition), opacity var(--transition);
+      pointer-events: none;
+      opacity: 0.4;
+      background: var(--white);
+      box-shadow: var(--shadow);
+    }
+
+    .game-card.enabled {
+      pointer-events: auto;
+      opacity: 1;
+    }
+
+    .game-card.enabled:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .game-card-dod {
+      border-top: 3px solid var(--accent);
+    }
+
+    .game-card-dod.enabled:hover {
+      border-color: var(--accent);
+    }
+
+    .game-card-str {
+      border-top: 3px solid #7B5EA7;
+    }
+
+    .game-card-str.enabled:hover {
+      border-color: #7B5EA7;
+    }
+
+    .game-card::before {
+      display: none;
+    }
+
+    .game-name {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .game-desc {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      line-height: 1.6;
+    }
+
+    .game-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 10px 20px;
+      border-radius: 8px;
+      transition: background var(--transition);
+    }
+
+    .game-card-dod .game-cta {
+      background: var(--accent);
+      color: var(--white);
+    }
+
+    .game-card-dod.enabled:hover .game-cta {
+      background: var(--accent-mid);
+    }
+
+    .game-card-str .game-cta {
+      background: #7B5EA7;
+      color: var(--white);
+    }
+
+    .game-card-str.enabled:hover .game-cta {
+      background: #6A4E91;
+    }
+
+    .lock-notice {
+      text-align: center;
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: opacity var(--transition);
+    }
+
+    .lock-notice.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    /* ===== CONTACT / FOOTER ===== */
+    .contact-section {
+      margin-top: 64px;
+      padding: 32px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .contact-section h2 {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 18px;
+      color: var(--text);
+      margin-bottom: 20px;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .contact-card {
+      padding: 18px;
+      background: var(--bg-alt);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-sm);
+    }
+
+    .contact-role {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .contact-name {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .contact-affil {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+      line-height: 1.5;
+    }
+
+    .contact-info {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .contact-info a {
+      color: var(--accent-mid);
+      text-decoration: none;
+    }
+
+    .contact-info a:hover {
+      text-decoration: underline;
+    }
+
+    .site-footer {
+      text-align: center;
+      padding: 40px 24px 32px;
+      color: var(--text-muted);
+      font-size: 12px;
+      line-height: 1.8;
+      border-top: 1px solid var(--card-border);
+    }
+
+    .site-footer .ethics-note {
+      margin-top: 8px;
+      font-size: 11px;
+      opacity: 0.7;
+    }
+
+    /* ===== ANIMATIONS ===== */
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 600px) {
+      .flow-steps {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .flow-steps::before {
+        display: none;
+      }
+
+      .game-buttons-wrap {
+        grid-template-columns: 1fr;
+      }
+
+      .accordion-body {
+        padding-left: 20px;
+      }
+
+      .consent-section {
+        padding: 24px 16px;
+      }
+
+      .header-title {
+        display: none;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ===== SCROLL REVEAL ===== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="univ-badge">
+        <div class="univ-name">
+          東京大学大学院情報学環
+          <span>Graduate School of Interdisciplinary Information Studies, UTokyo</span>
+        </div>
+      </div>
+      <div class="header-divider"></div>
+      <div class="header-title">藤本研究室 ゲーム研究プロジェクト</div>
+    </div>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <div class="hero-tag">研究参加者募集中</div>
+    <h1>
+      <span class="highlight">喪失をテーマにしたゲーム</span>の体験が<br>
+      プレイヤーに及ぼす影響に関する<br>探索的研究
+    </h1>
+    <p class="hero-lead">
+      この度は本研究にご関心をお持ちいただきありがとうございます。<br>
+      以下の説明をご一読いただき、ご同意の上でご参加ください。
+    </p>
+  </section>
+
+  <!-- ===== MAIN ===== -->
+  <main class="container">
+
+    <!-- FLOW STEPS -->
+    <section class="flow-section reveal" id="flow">
+      <div class="section-label">Participation Flow</div>
+      <h2 class="section-title">参加の流れ</h2>
+      <div class="flow-steps">
+        <div class="flow-step">
+          <div class="step-circle">
+            <span class="step-number">STEP 1</span>
+
+          </div>
+          <div class="step-title">事前アンケート</div>
+          <div class="step-desc">ゲーム体験前のアンケート（64問）にご回答いただきます</div>
+        </div>
+        <div class="flow-step">
+          <div class="step-circle">
+            <span class="step-number">STEP 2</span>
+
+          </div>
+          <div class="step-title">ゲーム体験</div>
+          <div class="step-desc">割り当てられたゲームを体験していただきます</div>
+        </div>
+        <div class="flow-step">
+          <div class="step-circle">
+            <span class="step-number">STEP 3</span>
+
+          </div>
+          <div class="step-title">事後アンケート</div>
+          <div class="step-desc">ゲーム体験後のアンケート（50問＋自由記述）にご回答いただきます</div>
+        </div>
+        <div class="flow-step">
+          <div class="step-circle">
+            <span class="step-number">STEP 4</span>
+
+          </div>
+          <div class="step-title">完了</div>
+          <div class="step-desc">すべてのステップが1つのURLで一括して実施できます</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPLANATION ACCORDION -->
+    <section class="explanation-section reveal" id="explanation">
+      <div class="section-label">Study Information</div>
+      <h2 class="section-title">研究に関する説明</h2>
+
+      <div class="accordion" id="accordionMain">
+
+        <!-- 1 -->
+        <div class="accordion-item">
+          <button class="accordion-header" aria-expanded="false" data-target="acc1">
+            <span class="accordion-num">1</span>
+            <span>この研究の概要</span>
+            <span class="accordion-chevron">
+              <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+            </span>
+          </button>
+          <div class="accordion-body" id="acc1">
+            <p><strong style="color:var(--accent)">研究課題</strong><br>
+              喪失をテーマにしたゲーム体験がプレイヤーに及ぼす影響に関する探索的研究</p>
+            <p><strong style="color:var(--accent)">研究責任者</strong><br>
+              藤本 徹（東京大学大学院情報学環・教授）</p>
+            <p><strong style="color:var(--accent)">研究従事者</strong><br>
+              坂井 裕紀（東京大学大学院情報学環・特任研究員）</p>
+            <p><strong style="color:var(--accent)">研究目的</strong><br>
+              喪失をテーマにしたゲームの体験が、プレイヤーのストレス関連成長等に及ぼす影響を探索的に研究することです。</p>
+            <p><strong style="color:var(--accent)">研究方法</strong><br>
+              自己記入式のオンラインアンケート調査です。調査ページ上の説明を読んでご同意いただいた後、事前調査・ゲーム体験・事後調査の順に実施します。</p>
+          </div>
+        </div>
+
+        <!-- 2 -->
+        <div class="accordion-item">
+          <button class="accordion-header" aria-expanded="false" data-target="acc2">
+            <span class="accordion-num">2</span>
+            <span>研究協力の任意性と撤回の自由</span>
+            <span class="accordion-chevron">
+              <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+            </span>
+          </button>
+          <div class="accordion-body" id="acc2">
+            <p>この研究にご協力いただくかどうかは、あなたの自由意思に委ねられています。一旦ご同意いただいた後でも、同意を撤回される場合は、同意撤回書に署名し、下記の連絡先にご提出ください。</p>
+            <p>研究にご協力いただけないことで不利益につながることは一切ありません。</p>
+            <p>なお、以下の場合には同意を撤回しても情報を破棄できない場合があります。</p>
+            <p>・回答が完全に匿名化されて個人が特定できない場合<br>
+               ・すでにデータ解析が行われ、情報を分離して破棄できない場合</p>
+          </div>
+        </div>
+
+        <!-- 3 -->
+        <div class="accordion-item">
+          <button class="accordion-header" aria-expanded="false" data-target="acc3">
+            <span class="accordion-num">3</span>
+            <span>個人情報の保護</span>
+            <span class="accordion-chevron">
+              <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+            </span>
+          </button>
+          <div class="accordion-body" id="acc3">
+            <p>研究にあたっては研究協力者の皆様に不利益が生じないよう、個人情報の保護・プライバシーの尊重に努力し、最大限の注意を払います。回答は匿名のままデータ収集・分析されます。</p>
+          </div>
+        </div>
+
+        <!-- 4 -->
+        <div class="accordion-item">
+          <button class="accordion-header" aria-expanded="false" data-target="acc4">
+            <span class="accordion-num">4</span>
+            <span>研究成果の発表</span>
+            <span class="accordion-chevron">
+              <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+            </span>
+          </button>
+          <div class="accordion-body" id="acc4">
+            <p>研究の成果は、氏名など個人が特定できない形式で、学会発表・学術雑誌・データベース等で公表します。</p>
+          </div>
+        </div>
+
+        <!-- 5 -->
+        <div class="accordion-item">
+          <button class="accordion-header" aria-expanded="false" data-target="acc5">
+            <span class="accordion-num">5</span>
+            <span>研究参加者にもたらされる利益及び不利益</span>
+            <span class="accordion-chevron">
+              <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+            </span>
+          </button>
+          <div class="accordion-body" id="acc5">
+            <p>この研究に参加することで人生を振り返り、今後のキャリア形成の参考になることが期待できます。また、本研究の成果は今後の教育工学および死生学の発展に寄与することが期待されています。</p>
+            <div class="warning-box">
+
+              <span>
+                本研究は喪失をテーマにしているため、<strong>過去6か月以内に身近な方との死別や重大な喪失体験をされた方</strong>には心理的な負担が大きくなる可能性があります。そのような方は参加をお控えください。<br>
+                回答中・ゲーム体験中に不快感が生じた場合は、いつでも参加を中断・中止することができます。
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6 -->
+        <div class="accordion-item">
+          <button class="accordion-header" aria-expanded="false" data-target="acc6">
+            <span class="accordion-num">6</span>
+            <span>研究終了後の資料等の取扱方針</span>
+            <span class="accordion-chevron">
+              <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+            </span>
+          </button>
+          <div class="accordion-body" id="acc6">
+            <p>いただいた情報は匿名化した上で研究・分析等に用います。東京大学大学院情報学環 藤本研究室において、研究成果の発表後、少なくとも10年間保存いたします。</p>
+          </div>
+        </div>
+
+        <!-- 7 -->
+        <div class="accordion-item">
+          <button class="accordion-header" aria-expanded="false" data-target="acc7">
+            <span class="accordion-num">7</span>
+            <span>費用負担</span>
+            <span class="accordion-chevron">
+              <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+            </span>
+          </button>
+          <div class="accordion-body" id="acc7">
+            <p>この研究に必要な費用を、あなたが負担することはありません。また、本研究に参加いただいても、謝礼や交通費などの支給はありませんのでご了承ください。</p>
+          </div>
+        </div>
+
+        <!-- 8 -->
+        <div class="accordion-item">
+          <button class="accordion-header" aria-expanded="false" data-target="acc8">
+            <span class="accordion-num">8</span>
+            <span>その他（倫理審査について）</span>
+            <span class="accordion-chevron">
+              <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+            </span>
+          </button>
+          <div class="accordion-body" id="acc8">
+            <p>この研究は、東京大学大学院情報学環・学際情報学府 ヒトを対象とした実験研究および調査研究に関する倫理審査委員会において審査し、東京大学大学院情報学環長の承認を受けて実施するものです。</p>
+            <p>ご意見・ご質問などがございましたら、下記の連絡先にお問い合わせください。</p>
+          </div>
+        </div>
+
+      </div><!-- /accordion -->
+    </section>
+
+    <!-- CONSENT SECTION -->
+    <section class="consent-section reveal" id="consent">
+      <div class="consent-title">同意確認</div>
+      <p class="consent-subtitle">上記の説明事項をご確認の上、下記にチェックを入れてご参加ください。</p>
+
+      <label class="consent-single" id="consentSingle">
+        <input type="checkbox" style="display:none" id="chkMain">
+        <div class="consent-checkbox">
+          <svg class="checkmark" viewBox="0 0 16 16"><path d="M3 8l4 4 6-7"/></svg>
+        </div>
+        <span class="consent-text">
+          上記の説明事項（研究の概要・任意性・個人情報の保護・成果の発表・利益と不利益・資料取扱・費用負担・その他）をすべて読み、理解した上で、本研究の参加者となることに同意します。また、過去6か月以内に身近な方との死別や重大な喪失体験がないことを確認しました。
+          <small>※ 同意を撤回される場合は、下記の連絡先にご連絡ください。</small>
+        </span>
+      </label>
+
+      <!-- ゲーム選択ボタン -->
+      <div class="game-buttons-wrap">
+        <a
+          id="btn-dod"
+          class="game-card game-card-dod"
+          href="https://sunaonahito.github.io/game-survey/"
+          target="_blank"
+          rel="noopener"
+          aria-label="Dice of Destinyで参加する"
+          tabindex="-1"
+        >
+
+          <div class="game-name">Dice of Destiny</div>
+          <div class="game-desc">サイコロで大切な物事が失われる<br>ダイスゲーム</div>
+          <span class="game-cta">参加する →</span>
+        </a>
+
+        <a
+          id="btn-str"
+          class="game-card game-card-str"
+          href="https://sunaonahito.github.io/game-survey-s/"
+          target="_blank"
+          rel="noopener"
+          aria-label="Strayingで参加する"
+          tabindex="-1"
+        >
+
+          <div class="game-name">Straying</div>
+          <div class="game-desc">失われた物事を子どもと一緒に<br>探すノベルゲーム</div>
+          <span class="game-cta">参加する →</span>
+        </a>
+      </div>
+
+      <p class="lock-notice" id="lockNotice">
+        すべての項目にチェックを入れると参加ボタンが有効になります
+      </p>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact-section reveal" id="contact">
+      <h2>お問い合わせ・連絡先</h2>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <div class="contact-role">研究責任者</div>
+          <div class="contact-name">藤本 徹</div>
+          <div class="contact-affil">東京大学大学院情報学環・教授<br>〒113-0033 東京都文京区本郷7-3-1</div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-role">研究従事者（調査実施担当）</div>
+          <div class="contact-name">坂井 裕紀</div>
+          <div class="contact-affil">東京大学大学院情報学環・特任研究員</div>
+          <div class="contact-info">
+            Tel: <a href="tel:0358417829">03-5841-7829</a><br>
+            Email: <a href="mailto:hironori.sakai@iii.u-tokyo.ac.jp">hironori.sakai@iii.u-tokyo.ac.jp</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <div>© 2026 藤本研究室, 東京大学大学院情報学環. All rights reserved.</div>
+    <div class="ethics-note">
+      本研究は東京大学大学院情報学環・学際情報学府 ヒトを対象とした実験研究および調査研究に関する倫理審査委員会の承認を受けて実施しています。
+    </div>
+  </footer>
+
+  <!-- ===== SCRIPT ===== -->
+  <script>
+    // ---------- Accordion ----------
+    document.querySelectorAll('.accordion-header').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var item = btn.closest('.accordion-item');
+        var isOpen = item.classList.contains('open');
+        item.classList.toggle('open', !isOpen);
+        btn.setAttribute('aria-expanded', !isOpen);
+      });
+    });
+
+    // ---------- Single Consent Checkbox ----------
+    var chkMain    = document.getElementById('chkMain');
+    var consentEl  = document.getElementById('consentSingle');
+    var lockNotice = document.getElementById('lockNotice');
+    var btnDod     = document.getElementById('btn-dod');
+    var btnStr     = document.getElementById('btn-str');
+
+    function updateConsent() {
+      var checked = chkMain.checked;
+      consentEl.classList.toggle('checked', checked);
+
+      if (checked) {
+        btnDod.classList.add('enabled');
+        btnStr.classList.add('enabled');
+        btnDod.removeAttribute('tabindex');
+        btnStr.removeAttribute('tabindex');
+        lockNotice.classList.add('hidden');
+      } else {
+        btnDod.classList.remove('enabled');
+        btnStr.classList.remove('enabled');
+        btnDod.setAttribute('tabindex', '-1');
+        btnStr.setAttribute('tabindex', '-1');
+        lockNotice.classList.remove('hidden');
+      }
+    }
+
+    consentEl.addEventListener('click', function(e) {
+      if (e.target.tagName === 'INPUT') return; // changeイベントに任せる
+      chkMain.checked = !chkMain.checked;
+      updateConsent();
+    });
+
+    chkMain.addEventListener('change', updateConsent);
+
+    // ---------- Scroll Reveal ----------
+    var reveals = document.querySelectorAll('.reveal');
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    reveals.forEach(function(el) { observer.observe(el); });
+
+    // 初期化
+    updateConsent();
+  </script>
+
+</body>
+</html>
